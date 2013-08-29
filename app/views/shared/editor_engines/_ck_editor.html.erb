@@ -5,8 +5,39 @@
     var ids = [<%= raw ids.map{|id| "'#{id}'"}.join(', ') %>];
     for(var key in ids){
       if($('#' + ids[key]).length > 0){
-        CKEDITOR.replace(ids[key]);
+        CKEDITOR.replace(ids[key], {
+          // custom config: http://ckeditor.com/latest/samples/plugins/toolbar/toolbar.html
+          toolbar: [
+            { 
+              name: 'links', 
+              items: [ 'Link', 'Unlink' ] 
+            },
+            { 
+              name: 'insert', 
+              items: [ 'Image', 'Table' ] 
+            },
+            { 
+              name: 'basicstyles', 
+              groups: [ 'basicstyles', 'cleanup' ], 
+              items: [ 'Bold', 'Italic' ] 
+            },
+            { 
+              name: 'paragraph', 
+              groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], 
+              items: [ 'NumberedList', 'BulletedList', '-', 'Blockquote' ] 
+            },
+            { 
+              name: 'styles', 
+              items: [ 'Format' ] 
+            },
+            { 
+              name: 'document', 
+              groups: [ 'mode', 'document', 'doctools' ], items: [ 'Source' ] 
+            },            
+          ]
+        });
       }
     }
+
   });
 </script>
