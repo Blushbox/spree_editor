@@ -5,8 +5,35 @@
     var ids = [<%= raw ids.map{|id| "'#{id}'"}.join(', ') %>];
     for(var key in ids){
       if($('#' + ids[key]).length > 0){
+        
+        // styles dropdown
+        CKEDITOR.stylesSet.add( 'my_styles', [
+            { 
+              name: 'Judd Custom', 
+              element: 'h2', 
+              styles: { 
+                color: 'Blue' 
+              } 
+            },
+            { 
+              name: 'Red Title',  
+              element: 'h3', 
+              styles: { 
+                color: 'Red' 
+              } 
+            },
+            { 
+              name: 'CSS Style', 
+              element: 'span', 
+              attributes: { 
+                'class': 'my_style' 
+              } 
+            }
+        ]);   
+
         CKEDITOR.replace(ids[key], {
           // custom config: http://ckeditor.com/latest/samples/plugins/toolbar/toolbar.html
+          stylesSet: 'my_styles',
           toolbar: [
             { 
               name: 'links', 
@@ -28,14 +55,14 @@
             },
             { 
               name: 'styles', 
-              items: [ 'Format' ] 
+              items: [ 'Styles' ] 
             },
             { 
               name: 'document', 
               groups: [ 'mode', 'document', 'doctools' ], items: [ 'Source' ] 
             },            
           ]
-        });
+        }); 
       }
     }
 
