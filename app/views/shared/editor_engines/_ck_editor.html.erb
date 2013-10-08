@@ -25,6 +25,12 @@
         ]);   
 
         CKEDITOR.replace(ids[key], {
+          entities: false,
+          basicEntities: false,
+          entitiesGreek: false, 
+          entitiesLatin: false, 
+          entitiesAdditional: '',
+          htmlEncodeOutput: false,          
           // custom config: http://ckeditor.com/latest/samples/plugins/toolbar/toolbar.html
           stylesSet: 'my_styles',
           toolbar: [
